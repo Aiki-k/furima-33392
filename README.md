@@ -2,16 +2,16 @@
 
 ## Usersテーブル
 
-|Column|Type|options|NOT NULL|
+|Column|Type|options|
 |---|---|---|
-|nickname|string|NOT NULL|
-|email|string|NOT NULL,unique:true|
-|encrypted_password|string|NOT NULL|
-|last_name|string|NOT NULL|
-|first_name|string|NOT NULL|
-|last_name_kana|string|NOT NULL|
-|first_name_kana|string|NOT NULL|
-|j_seinen|date|NOT NULL|
+|nickname|string|null: false|
+|email|string|null: false,unique:true|
+|encrypted_password|string|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|j_seinen|date|null: false|
 
 ### アソシエーション
 
@@ -23,13 +23,13 @@
 
 |Column|Type|options|
 |---|---|---|
-|name|string|NOT NULL|
-|how_item|text|NOT NULL|
-|category_id|string|NOT NULL|
-|delivery_fee_id|string|NOT NULL|
-|delivery_area_id|string|NOT NULL|
-|send_day_id|string|NOT NULL|
-|fee_id|string|NOT NULL|
+|name|string|null: false|
+|how_item|text|null: false|
+|category_id|string|null: false|
+|delivery_fee_id|string|null: false|
+|delivery_area_id|string|null: false|
+|send_day_id|string|null: false|
+|fee|string|null: false|
 |user|references|foreign_key:true|
 
 ###　アソシエーション
@@ -47,8 +47,8 @@
 
 ### アソシエーション
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - has_one :living
 
 
@@ -56,13 +56,14 @@
 
 |Column|Type|options|
 |---|---|---|
-|postal_code|string|NOT NULL|
-|j_todofuken|string|NOT NULL|
-|j_sityoson|string|NOT NULL|
-|j_banti|string|NOT NULL|
-|building|string|NOT NULL|
-|phone_number|string|NOT NULL|
+|postal_code|string|null: false|
+|j_todofuken|integer|null: false|
+|j_sityoson|integer|null: false|
+|j_banti|integer|null: false|
+|building|string|
+|phone_number|string|null: false|
+|buy|references|foreign_key:true|
 
 ### アソシエーション
 
-- belongs_to :buys
+- belongs_to :buy
