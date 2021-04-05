@@ -28,11 +28,12 @@
 |image|text|NOT NULL|
 |name|string|NOT NULL|
 |how_item|text|NOT NULL|
-|category|string|NOT NULL|
-|delivery_fee|string|NOT NULL|
-|delivery_area|string|NOT NULL|
-|send_day|string|NOT NULL|
-|fee|string|NOT NULL|
+|category_id|integer|NOT NULL|
+|item_status|text|NOT NULL|
+|delivery_fee_id|integer|NOT NULL|
+|delivery_area_id|integer|NOT NULL|
+|send_day_id|integer|NOT NULL|
+|fee|integer|NOT NULL|
 |user_id|references|
 
 ###　アソシエーション
@@ -60,11 +61,11 @@
 |Column|Type|options|
 |---|---|---|
 |postal_code|string|NOT NULL|
-|j_todofuken|string|NOT NULL|
 |j_sityoson|string|NOT NULL|
 |j_banti|string|NOT NULL|
 |building|string|NOT NULL|
 |phone_number|string|NOT NULL|
+|delivery_area_id|
 
 ### アソシエーション
 
