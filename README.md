@@ -25,15 +25,15 @@
 
 |Column|Type|options|
 |---|---|---|
-|image|text|NOT NULL|
 |name|string|NOT NULL|
 |how_item|text|NOT NULL|
-|category|string|NOT NULL|
-|delivery_fee|string|NOT NULL|
-|delivery_area|string|NOT NULL|
-|send_day|string|NOT NULL|
+|status_id|integer|NOT NULL|
+|category_id|integer|NOT NULL|
+|delivery_fee_id|integer|NOT NULL|
+|delivery_area_id|integer|NOT NULL|
+|send_day_id|integer|NOT NULL|
 |fee|string|NOT NULL|
-|user_id|references|
+|user|references|foreign_key: true|
 
 ###　アソシエーション
 
@@ -45,8 +45,8 @@
 
 |Column|Type|options|
 |---|---|---|
-|user_id|references|
-|item_id|references|
+|user|references|foreign_key: true|
+|item|references|foreign_key: true|
 
 ### アソシエーション
 
