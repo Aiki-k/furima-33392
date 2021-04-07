@@ -58,7 +58,7 @@
 |Column|Type|options|
 |---|---|---|
 |postal_code|string|NOT NULL|
-|j_todofuken|string|NOT NULL|
+|delivery_area_id|integer|NOT NULL|
 |j_sityoson|string|NOT NULL|
 |j_banti|string|NOT NULL|
 |building|string|
