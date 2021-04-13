@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'last_name,first_nameが全角なら登録できる' do
-      @user.last_name ='山田'
+      @user.last_name = '山田'
       @user.first_name = '太郎'
       expect(@user).to be_valid
     end
@@ -30,7 +30,6 @@ RSpec.describe User, type: :model do
   end
 
   context '新規登録ができない時' do
-
     it 'nicknameが空では登録できない' do
       @user.nickname = ''
       @user.valid?
@@ -108,13 +107,13 @@ RSpec.describe User, type: :model do
     it 'passwordが半角英字のみでは登録できない' do
       @user.password = 'aaaaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
+      expect(@user.errors.full_messages).to include('Password is invalid')
     end
 
     it 'passwordが半角数字のみでは登録できない)' do
       @user.password = '111111'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid")
+      expect(@user.errors.full_messages).to include('Password is invalid')
     end
 
     it 'passwordとpassword_confirmationが一致しないと登録できない' do
@@ -126,45 +125,44 @@ RSpec.describe User, type: :model do
     it 'passwordが全角では登録できない' do
       @user.password = 'あああ１１１'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password is invalid")
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", 'Password is invalid')
     end
 
     it 'last_nameが半角文字だと登録できない' do
       @user.last_name = 'aaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name is invalid")
+      expect(@user.errors.full_messages).to include('Last name is invalid')
     end
 
     it 'first_nameが半角文字だと登録できない' do
       @user.first_name = 'aaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name is invalid")
+      expect(@user.errors.full_messages).to include('First name is invalid')
     end
 
     it 'last_name_kanaが半角文字だと登録できない' do
       @user.last_name_kana = 'aaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      expect(@user.errors.full_messages).to include('Last name kana is invalid')
     end
 
     it 'first_name_kanaが半角文字だと登録できない' do
       @user.first_name_kana = 'aaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name kana is invalid")
+      expect(@user.errors.full_messages).to include('First name kana is invalid')
     end
 
     it 'last_name_kanaがカタカナ以外の全角文字だと登録できない' do
       @user.last_name_kana = 'あああ'
       @user.valid?
       binding.pry
-      expect(@user.errors.full_messages).to include("Last name kana is invalid")
+      expect(@user.errors.full_messages).to include('Last name kana is invalid')
     end
 
     it 'first_name_kanaがカタカナ以外の全角文字だと登録できない' do
       @user.first_name_kana = 'あああ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name kana is invalid")
+      expect(@user.errors.full_messages).to include('First name kana is invalid')
     end
-
   end
 end

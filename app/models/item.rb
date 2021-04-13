@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :delivery_fee_id, numericality: { other_than: 1 }
     validates :delivery_area_id, numericality: { other_than: 1 }
     validates :send_day_id, numericality: { other_than: 1 }
-    validates :fee, format: { with: /\A[0-9]+\z/ }
+    validates :fee, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than: 299, less_than: 10_000_000 }
     validates :user_id
   end
 
@@ -20,5 +20,4 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :delivery_area
   belongs_to :send_day
-  
 end
