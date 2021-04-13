@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :delivery_fee_id, numericality: { other_than: 1 }
     validates :delivery_area_id, numericality: { other_than: 1 }
     validates :send_day_id, numericality: { other_than: 1 }
-    validates :fee
+    validates :fee, format: { with: /\A[0-9]+\z/ }
     validates :user_id
   end
 
