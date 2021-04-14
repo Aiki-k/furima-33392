@@ -8,6 +8,7 @@ FactoryBot.define do
     delivery_area_id { 2 }
     send_day_id { 2 }
     fee { 1000 }
-    user_id { @user.id }
+    image {Faker::Lorem.sentence}
+    association :user
   end
 end

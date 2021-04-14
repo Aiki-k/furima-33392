@@ -91,5 +91,11 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Fee must be less than 10000000')
     end
+
+    it '画像が１枚ないと登録できない' do
+      @item.image = ''
+      @item.valid?
+      binding.pry
+    end
   end
 end
