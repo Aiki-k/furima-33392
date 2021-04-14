@@ -68,6 +68,18 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Fee is not a number')
     end
 
+    it 'feeが半角英数混合だと投稿できない' do
+      @item.fee = 'aaa1111'
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Fee is not a number')
+    end
+
+    it 'feeが半角英字のみだと投稿できない' do
+      @item.fee = 'aaaaaa'
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Fee is not a number')
+    end
+
     it 'feeが300未満だと投稿できない' do
       @item.fee = 299
       @item.valid?
