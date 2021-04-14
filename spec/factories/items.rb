@@ -8,7 +8,10 @@ FactoryBot.define do
     delivery_area_id { 2 }
     send_day_id { 2 }
     fee { 1000 }
-    image {Faker::Lorem.sentence}
     association :user
+
+    after(:build) do |message|
+      message.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
   end
 end

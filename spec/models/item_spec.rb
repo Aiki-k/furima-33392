@@ -93,9 +93,9 @@ RSpec.describe Item, type: :model do
     end
 
     it '画像が１枚ないと登録できない' do
-      @item.image = ''
+      @item.image = nil
       @item.valid?
-      binding.pry
+      expect(@item.errors.full_messages).to include("Image can't be blank")
     end
   end
 end
