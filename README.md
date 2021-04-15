@@ -33,7 +33,7 @@
 |fee|integer|NOT NULL|
 |user|references|foreign_key: true|
 
-###　アソシエーション
+### アソシエーション
 
 - belongs_to :user
 - has_one :buy
