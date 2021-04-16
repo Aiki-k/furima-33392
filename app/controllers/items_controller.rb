@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     if @item.user == current_user
       render :edit
     else
-      redirect_to item_path
+      redirect_to edit_item_path
     end
   end
 
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path
     else
-      render :edit
+      render "edit"
     end
   end
 
