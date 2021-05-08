@@ -14,10 +14,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  # def create
-  #   buy_item = BuyItem.create
-  # end
-
   private
 
   def order_params
