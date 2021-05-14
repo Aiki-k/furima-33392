@@ -134,9 +134,11 @@
             <%# <img src="item.try(:image)",class: "item-img"> %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
-            <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div>
+            <% if item.buy_item.present? %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
             <%# //商品が売れていればsold outを表示しましょう %>
 
           </div>

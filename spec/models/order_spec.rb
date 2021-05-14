@@ -34,6 +34,11 @@ RSpec.describe Order, type: :model do
       @order.valid?
       expect(@order.errors.full_messages).to include("Phone number can't be blank")
     end
+    it 'tokenが空だと保存できない' do
+      @order.token = nil
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Token can't be blank")
+    end
     it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @order.postal_code = '1234567'
       @order.valid?

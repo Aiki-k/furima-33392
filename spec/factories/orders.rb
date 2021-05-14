@@ -6,6 +6,7 @@ FactoryBot.define do
     j_banti { '北区3丁目' }
     building { 'Aマンション１１１' }
     phone_number { "08012345678" }
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end
 # { "0#{rand(0..9)}0#{rand(1_000_000..99_999_999)}" }
