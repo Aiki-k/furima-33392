@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, expect: [:index, :show]
-  before_action :set_item, expect: [:index, :show]
+  before_action :set_item, only: [:index, :show]
+  before_action :index_params, only: [:index, :show]
 
   def index
     if set_item.buy_item.present?
@@ -37,9 +38,16 @@ class OrdersController < ApplicationController
     )
   end
 
-  def set_item
+  def index_params
     @item = Item.find(params[:item_id])
     if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+    if @item.buy_item.present?
       redirect_to root_path
     end
   end
