@@ -1,15 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, expect: [:index, :show]
-  before_action :set_item, only: [:index, :show]
-  before_action :index_params, only: [:index, :show]
+  before_action :authenticate_user!, expect: [:index, :create]
+  before_action :set_item, only: [:index, :create]
+  before_action :index_params, only: [:index, :create]
 
   def index
-    if set_item.buy_item.present?
-      redirect_to root_path
-    else
-      set_item
       @order = Order.new
-    end
   end
 
   def create
