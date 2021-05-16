@@ -65,7 +65,7 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Postal code is invalid')
       end
-      it '電話番号は10桁以下では保存できない' do
+      it '電話番号は9桁以下では保存できない' do
         @order.phone_number = "012345678"
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is invalid')

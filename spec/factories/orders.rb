@@ -7,8 +7,5 @@ FactoryBot.define do
     building { 'Aマンション１１１' }
     phone_number { "08012345678" }
     token {"tok_abcdefghijk00000000000000000"}
-    # association :user
-    # association :item
   end
 end
-# { "0#{rand(0..9)}0#{rand(1_000_000..99_999_999)}" }

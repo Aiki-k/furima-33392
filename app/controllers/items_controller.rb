@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_params, only: [:edit, :update, :show, :destroy]
-  before_action :edit_updete, only: [:edit, :update]
+  before_action :edit_update, only: [:edit, :update]
   before_action :edit_params, only: :edit
 
   def index
@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to item_path
+    if @item.update(item_params) && @item.buy_item.present?
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -37,9 +37,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.user_id == current_user.id
+    if @item.user_id == current_user.id && @item.buy_item.present?
       @item.destroy
       redirect_to root_path
+    else
+      render 'show'
     end
   end
 
@@ -52,7 +54,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def edit_updete
+  def edit_update
     redirect_to root_path if current_user.id != @item.user.id
   end
 
