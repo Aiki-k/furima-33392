@@ -16,7 +16,7 @@
 ### アソシエーション
 
 - has_many :items
-- has_many :buys
+- has_many :buyitems
 
 
 ## Items テーブル
@@ -36,10 +36,10 @@
 ### アソシエーション
 
 - belongs_to :user
-- has_one :buy
+- has_one :buyitem
 
 
-## buys テーブル
+## buyitems テーブル
 
 |Column|Type|options|
 |---|---|---|
