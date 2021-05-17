@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, expect: [:index, :create]
-  before_action :set_item, only: [:index, :create]
-  before_action :index_params, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :set_item
+  before_action :index_params
 
   def index
       @order = Order.new
