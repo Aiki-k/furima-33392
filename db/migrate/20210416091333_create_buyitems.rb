@@ -1,6 +1,6 @@
 class CreateBuyitems < ActiveRecord::Migration[6.0]
   def change
-    create_table :buyitems do |t|
+    create_table :buy_items do |t|
       t.references :user, foreign_key: true
       t.references :item, foreign_key: true
       t.timestamps
