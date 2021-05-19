@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_091343) do
+ActiveRecord::Schema.define(version: 2021_04_17_075935) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,31 +33,13 @@ ActiveRecord::Schema.define(version: 2021_04_17_091343) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "buy_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "buyitems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_buyitems_on_item_id"
     t.index ["user_id"], name: "index_buyitems_on_user_id"
-  end
-
-  create_table "buyitems", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_buyitems_on_item_id"
-    t.index ["user_id"], name: "index_buyitems_on_user_id"
-  end
-
-  create_table "buys", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_buys_on_item_id"
-    t.index ["user_id"], name: "index_buys_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -75,17 +57,17 @@ ActiveRecord::Schema.define(version: 2021_04_17_091343) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "livings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "livings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
     t.integer "delivery_area_id", null: false
     t.string "j_sityoson", null: false
     t.string "j_banti", null: false
     t.string "building"
     t.string "phone_number", null: false
-    t.bigint "buy_item_id"
+    t.bigint "buyitem_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buy_item_id"], name: "index_livings_on_buy_item_id"
+    t.index ["buyitem_id"], name: "index_livings_on_buyitem_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,12 +89,8 @@ ActiveRecord::Schema.define(version: 2021_04_17_091343) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "buy_items", "items"
-  add_foreign_key "buy_items", "users"
   add_foreign_key "buyitems", "items"
   add_foreign_key "buyitems", "users"
-  add_foreign_key "buys", "items"
-  add_foreign_key "buys", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "livings", "buy_items"
+  add_foreign_key "livings", "buyitems"
 end

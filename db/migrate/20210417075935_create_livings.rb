@@ -7,7 +7,7 @@ class CreateLivings < ActiveRecord::Migration[6.0]
       t.string :j_banti, null: false
       t.string :building
       t.string :phone_number, null: false
-      t.references :buy_item, foreign_key: true
+      t.references :buyitem, foreign_key: true
       t.timestamps
     end
   end
